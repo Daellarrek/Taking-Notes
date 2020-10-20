@@ -1,16 +1,25 @@
+const express = require("express");
 const $noteTitle = $(".note-title");
 const $noteText = $(".note-textarea");
 const $saveNoteBtn = $(".save-note");
 const $newNoteBtn = $(".new-note");
 const $noteList = $(".list-container .list-group");
 
-let PORT = process.env.PORT || 3000;
+let PORT = process.env.PORT || 40545;
 
-// activeNote is used to keep track of the note in the textarea
+app = express()
 
 app.listen(PORT, function(){
 
 let activeNote = {};
+
+app.get("*", function(req, res) {
+  res.json(path.join(__dirname, "public/index.html"));
+});
+
+app.get("/notes", function(req, res) {
+  res.json(path.join(__dirname, "public/notes.html"));
+});
 
 // A function for getting all notes from the db
 const getNotes = () => {
